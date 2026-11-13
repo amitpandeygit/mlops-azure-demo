@@ -24,5 +24,5 @@ jobs:
       - name: 2 Build the image (it trains the model and checks the quality gate)
         run: docker build -t $IMAGE:latest -t $IMAGE:${{ github.sha }} .
 
-      - name: 3 Push the image (App Service sees the new latest image and redeploys)
+      - name: 3 Push the image (then click Restart on the container instance to load it)
         run: docker push --all-tags $IMAGE

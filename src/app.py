@@ -1,4 +1,4 @@
-"""Step 3a - Real-time inference API, deployed to Azure App Service."""
+"""Step 3a - Real-time inference API, deployed to Azure Container Instances."""
 import joblib
 import pandas as pd
 from fastapi import FastAPI

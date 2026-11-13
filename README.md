@@ -12,8 +12,8 @@ Follow the step-by-step student guide (PDF) to run it.
 | Batch scoring | src/batch_predict.py | GitHub Actions |
 | Drift check (KS test) | src/drift.py | GitHub Actions |
 | Build image and push to Azure Container Registry | .github/workflows/deploy.yml | GitHub Actions |
-| Real-time API (redeploys itself when a new image arrives) | src/app.py + Dockerfile | Azure App Service |
-| MLflow server | vm_custom_data.sh | Azure virtual machine (B1s) |
+| Real-time API (click Restart to load a new image) | src/app.py + Dockerfile | Azure Container Instances |
+| MLflow server | vm_custom_data.sh | Azure virtual machine (B2ats v2) |
 | Sample data | data/*.csv | upload to your storage account |
 
 ## Settings you must add in your fork
@@ -26,6 +26,10 @@ Open Settings, then Secrets and variables, then Actions.
 
 The lab account has the Contributor role, which cannot grant permissions, so GitHub signs in to the registry
 with the registry's admin login. GitHub keeps secrets encrypted and never shows them in logs.
+
+The lab also has no App Service quota, so the API runs on Azure Container Instances.
+After the deploy workflow pushes a new image, open the container instance and click Restart:
+the restart pulls the newest `latest` image.
 
 ## Run on your own computer (optional)
 

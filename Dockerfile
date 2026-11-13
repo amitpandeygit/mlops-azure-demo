@@ -14,5 +14,5 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ src/
 COPY --from=trainer /app/model/ model/
-# The container listens on port 8080 (set the App Service setting WEBSITES_PORT=8080)
+# The API listens on port 8080. Open port 8080 when you create the container instance.
 CMD exec uvicorn src.app:app --host 0.0.0.0 --port ${PORT:-8080}
